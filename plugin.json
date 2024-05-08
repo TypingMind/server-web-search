@@ -1,0 +1,51 @@
+{
+  "uuid": "8d87b292-bcc2-400a-a5b3-5ae022d70909",
+  "id": "server_get_web_search_results",
+  "isServerPlugin": true,
+  "disabled": true,
+  "system": true,
+  "emoji": "🔍",
+  "title": "Web Search",
+  "userSettings": [
+    {
+      "name": "searchEngineID",
+      "label": "Search Engine ID",
+      "required": true
+    },
+    {
+      "name": "searchEngineAPIKey",
+      "label": "Search Engine API Key",
+      "type": "password",
+      "required": true
+    }
+  ],
+  "openaiSpec": {
+    "name": "server_get_web_search_results",
+    "description": "Search for information from the internet in real-time using Google Search.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "keyword": {
+          "type": "string",
+          "description": "The search keyword"
+        }
+      },
+      "required": ["keyword"]
+    }
+  },
+
+  "httpAction": {
+    "id": "03544138-b83c-426f-b157-636e87907aae",
+    "method": "GET",
+    "name": "",
+    "url": "https://customsearch.googleapis.com/customsearch/v1?q={keyword}&cx={searchEngineID}&key={searchEngineAPIKey}",
+    "resultTransform": {
+      "engine": "jmes",
+      "expression": "items[*].{Title: title, Result: snippet, Link: link}"
+    },
+    "hasResultTransform": true
+  },
+  "code": "",
+  "implementationType": "http",
+  "outputType": "respond_to_ai"
+}
