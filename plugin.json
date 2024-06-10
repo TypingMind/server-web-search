@@ -1,9 +1,6 @@
 {
   "uuid": "8d87b292-bcc2-400a-a5b3-5ae022d70909",
   "id": "server_get_web_search_results",
-  "isServerPlugin": true,
-  "disabled": true,
-  "system": true,
   "emoji": "🔍",
   "title": "Web Search",
   "userSettings": [
